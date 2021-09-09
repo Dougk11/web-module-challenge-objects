@@ -15,9 +15,12 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
+function createMenuItem(food, price, category){
     /*Your code here*/
+    let menuItem = {name: food, price: price, category: category};
+    return menuItem;
 }
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
@@ -28,6 +31,10 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+console.log(createMenuItem("burger", 12, "lunch"));
+console.log(createMenuItem("steak", 18, "dinner"));
+console.log(createMenuItem("pancakes", 10, "breakfast"));
 
 
 
@@ -47,8 +54,18 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
+  discount: function (string) {
+      if (string === 'teacher' || string === 'student') {
+        return this.price * 0.75;
+      } else {
+        return this.price * 0.9;
+      }
+  }
   
 }
+
+console.log(burger.discount("teacher"));
+
 
 
 
@@ -69,7 +86,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
+console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -92,9 +109,13 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
+function addReview(array, a, b, c){
   /*Your Code Here */
+  array.push({name: a, rating: b, feedback: c})
+  return array;
 }
+let array3 = [];
+console.log(addReview(array3, 'Daniela', 5, 'great eats!'))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
@@ -107,11 +128,13 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(array, number) {
   /*Your code here*/
+  let string = `${array[number].name} gave the restaurant a ${array[number].rating} star review, and their feedback was: ${array[number].feedback}`
+  return string;
 }
 
-
+console.log(getReviewByIndex(reviews, 2));
   
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -126,9 +149,14 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
+function getLastReview(array) {
   /*Your code here*/
+  let x = array.length;
+  let string = `${array[x-1].name} gave the restaurant a ${array[x-1].rating} star review, and their feedback was: ${array[x-1].feedback}`
+  return string;
 } 
+
+
 
 
 
@@ -148,10 +176,18 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
+ function getReviewByRating(array, rating) {
     /* code here */
+    let arrayDiff = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].rating >= rating) {
+          arrayDiff.push(array[i]);
+        }
+    }
+    return arrayDiff;
   }
-
+  console.log('HElooo!!')
+  console.log(getReviewByRating(reviews, 3));
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
 Use the getLongReviews function below to do the following:
@@ -166,10 +202,18 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
+function getLongReviews(array) {
     /* code here */
+    let newArray = [];
+    for (let i = 0; i < array.length; i++ ) {
+      if (array[i].feedback.split(" ").length > 15) {
+        newArray.push[array[i].feedback];
+        }
+      }
+    return newArray;
   }
   
+console.log(getLongReviews(reviews))
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
@@ -189,10 +233,20 @@ Use the carMaker function below to do the following:
 */
 
 
-function carMaker(/* code here */) {
+function carMaker(value) {
     /* code here */
-    
+    let odometer = {
+      drive: function (distance) {
+        value = value + distance;
+        return value;
+      } 
+    }
+    return odometer;
 }
+
+console.log(carMaker(100).drive(20));
+
+
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
